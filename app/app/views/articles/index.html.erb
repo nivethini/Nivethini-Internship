@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>OneDrive</title>
+<script type="text/javascript" src="https://js.live.net/v5.0/OneDrive.js" id="onedrive-js" client-id="00000000401829FB"></script>
+<script type ="text/javascript">
+ function ShowOnedrivePicker() {
+            var oneDrivePickerOptions = {
+                success: function (files) {
+                    alert( files[0].link + "  name:" + files[0].name);
+                },
+                cancel: function () {
+                    // handle when the user cancels picking a file
+                },
+                linkType: "webViewLink",
+                multiSelect: true
+            }
+            OneDrive.open(oneDrivePickerOptions);
+        }
+        </script>
+</head>
+<body>
+<button onclick="ShowOnedrivePicker()"> One Drive Picker</button>
+</body>
+</html>
+
+<script type="text/javascript">
+  window.onload = function() {
+    
+    var pickerOptions = {
+  success: function(files) {
+    // Handle returned file object(s)
+    alert("You picked " + files.values[0].fileName);
+  },
+
+  cancel: function() {
+      // handle when the user cancels picking a file
+  },
+
+  linkType: "downloadLink", // or "downloadLink",
+  multiSelect: true // or true
+}
+</script>
+
+<script type="text/javascript">
+  window.onload = function() {
+    var pickerOptions = { /* ... */ };
+    var pickerButton = OneDrive.createOpenButton(pickerOptions);
+    document.getElementById("picker").appendChild(pickerButton);
+  }
+</script>
+
+<div id="picker"></div>
+ 
+
+
+
+<script type="text/javascript">
+  function launchOneDrivePicker(){
+    
+    var pickerOptions = {
+  success: function(files) {
+    // Handle returned file object(s)
+    alert("You picked " + files.values[0].fileName);
+  },
+
+  cancel: function() {
+      // handle when the user cancels picking a file
+  },
+
+  linkType: "downloadLink", // or "downloadLink",
+  multiSelect: true // or true
+}
+    OneDrive.open(pickerOptions);
+  }
+</script>
+
+
+
+
+<button onclick="launchOneDrivePicker">Open from OneDrive</button>
+
+
+<script type="text/javascript">
+window.onload = function() {
+    var saverOptions = { file: "file" /* ... */ };
+    var saverButton = OneDrive.createSaveButton(saverOptions);
+    document.getElementById("save").appendChild(saverButton);
+}
+</script>
+
+<input id="file" name="file" type="file" multi/>
+<div id="save"></div>
+
+
+<script type="text/javascript">
+  function launchOneDriveSaver(){
+    var saverOptions = { file: "file" /* ... */ };
+    OneDrive.save(saverOptions);
+  }
+</script>
+
+<input id="file" name="file" type="file" />
+<button onclick="launchOneDriveSaver">Save to OneDrive</button>
